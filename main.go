@@ -242,6 +242,7 @@ func (s *gameScene) Update() {
 		engine.UI.Label(fmt.Sprintf("GAME OVER"), 150, 100, 64, mgl32.Vec4{1, 1, 1, 1})
 		if (engine.UI.Button(200, 150, 200, 100, 3, "RESTART", mgl32.Vec4{1, 1, 1, 1})) {
 			s.player.Pos = mgl32.Vec3{300, 200, 3}
+			s.player.Rot = mgl32.Vec3{}
 			s.playerDir = mgl32.Vec2{1, 0}
 			s.playerVel = mgl32.Vec2{0, 0}
 			s.asteroidSpawnInterval = time.Second * 2
