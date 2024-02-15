@@ -51,12 +51,12 @@ type menuScene struct {
 func (m *menuScene) Update() {
 	engine.UI.Begin()
 	engine.UI.Label("ASTEROIDS", 60, 30, 120, mgl32.Vec4{1, 1, 1, 1})
-	if engine.UI.Button(200, 200, 200, 50, 1, "PLAY", mgl32.Vec4{1, 1, 1, 1}) {
+	if engine.UI.Button(200, 200, 200, 50, "PLAY", mgl32.Vec4{1, 1, 1, 1}) {
 		m.game.SetScene(m.gameScene)
 		m.gameScene.isPlaying = true
 	}
 
-	if engine.UI.Button(200, 300, 200, 50, 2, "QUIT", mgl32.Vec4{1, 1, 1, 1}) {
+	if engine.UI.Button(200, 300, 200, 50, "QUIT", mgl32.Vec4{1, 1, 1, 1}) {
 		m.game.Quit()
 	}
 	engine.UI.End()
@@ -240,7 +240,7 @@ func (s *gameScene) Update() {
 	engine.UI.Label(fmt.Sprintf("Score: %d", s.score), 10, 10, 32, mgl32.Vec4{1, 1, 1, 1})
 	if !s.isPlaying {
 		engine.UI.Label(fmt.Sprintf("GAME OVER"), 150, 100, 64, mgl32.Vec4{1, 1, 1, 1})
-		if (engine.UI.Button(200, 150, 200, 100, 3, "RESTART", mgl32.Vec4{1, 1, 1, 1})) {
+		if (engine.UI.Button(200, 150, 200, 100, "RESTART", mgl32.Vec4{1, 1, 1, 1})) {
 			s.player.Pos = mgl32.Vec3{300, 200, 3}
 			s.player.Rot = mgl32.Vec3{}
 			s.playerDir = mgl32.Vec2{1, 0}
@@ -251,7 +251,7 @@ func (s *gameScene) Update() {
 			s.score = 0
 			s.isPlaying = true
 		}
-		if (engine.UI.Button(200, 250, 200, 100, 4, "QUIT", mgl32.Vec4{1, 1, 1, 1})) {
+		if (engine.UI.Button(200, 250, 200, 100, "QUIT", mgl32.Vec4{1, 1, 1, 1})) {
 			s.game.Quit()
 		}
 	}
